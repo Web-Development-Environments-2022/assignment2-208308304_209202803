@@ -14,8 +14,7 @@
 		<script type="text/javascript" src="./scripts/jQuery/settingsValidation.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style/menu.css" />
 		<link rel="stylesheet" type="text/css" href="./style/welcome.css" />
-		<link rel="stylesheet" type="text/css" href="./style/register.css" />
-		<link rel="stylesheet" type="text/css" href="./style/login.css" />
+		<link rel="stylesheet" type="text/css" href="./style/boxForm.css" />
 		<link rel="stylesheet" type="text/css" href="./style/game.css" />
 		<title>Ms. Pacman - Nitzan & Malka</title>
 		<link rel="icon" href="./images/pacmanIcon.ico">
@@ -28,8 +27,6 @@
 	</head>
 
 	<body>
-		<!--<img src="images/logoGif.gif" id="pacmanLogo" alt="pacmanLogo">-->
-		<!--<img src="images/spark.webp" id="pacmanLogo" alt="pacmanLogo">-->
 		<nav class="menu">
 			<a href="#" id="welcomeMenu">Welcome</a>
 			<a id="registerMenu">Register</a>
@@ -44,8 +41,8 @@
 
 		<div id="content">
 			<div id="welcomeScreen">
-				<button id="registerButton"> Register </button>
-				<button id="loginButton"> Login </button>
+				<button class="button-52" id="registerButton"> Register </button>
+				<button class="button-52" id="loginButton"> Login </button>
 			</div> 
 
 			<div id="registerScreen" class="boxFrame">
@@ -158,15 +155,27 @@
 					</div>
 				  <div class="boxItem">
 					<input type="number" id="gameTime" name="gameTime" min="60" >
-					<label>Time of the game (min 60 sec)</label>
+					<label>Time of the game</label>
 				  </div>
 				  <div class="boxItem">
 						<input type="number" id="numOfMonsters" name="numOfMonsters" min="1" max="4" >
-						<label>Number of Monsters</label>
+						<label>Number of Ghosts</label>
 				  </div>
 				  <div>
-					<label id="randomButton">Random</label> 
+					  <a id="randomButton">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<label id="randomButtonLbl">Random</label> 
+				</a>
+				<a id="setting_btn_area">
+					<span></span>
+					<span></span>  
+					<span></span>
+					<span></span>
 					<input id="submitSetting" type="submit" value="Play"></input>
+				</a>
 				  </div>
 				</form>
 			  </div>
@@ -275,6 +284,7 @@
 			</div>
 		</div>
 		<footer>
+			<img src="images/logoGif.gif" id="pacmanLogo" alt="pacmanLogo">
 			<span class="contact">Nitzan Hen & Malka Hanimov</span><br>
 			<span class="contact">nitzanhe@post.bgu.ac.il   malkahan@post.bgu.ac.il</span>
 		</footer>
