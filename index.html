@@ -14,7 +14,10 @@
 		<script type="text/javascript" src="./scripts/jQuery/settingsValidation.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style/menu.css" />
 		<link rel="stylesheet" type="text/css" href="./style/welcome.css" />
-		<link rel="stylesheet" type="text/css" href="./style/boxFrom.css" />
+		<link rel="stylesheet" type="text/css" href="./style/boxForm.css" />
+		<link rel="stylesheet" type="text/css" href="./style/game.css" />
+		<title>Ms. Pacman - Nitzan & Malka</title>
+		<link rel="icon" href="./images/pacmanIcon.ico">
 		<title>Ms. Pacman - Nitzan & Malka</title>
 		<link rel="icon" href="./images/pacmanIcon.ico">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,7 +106,7 @@
 				</div>
 				<div class="modalBody">
 					<p>Nitzan Hen 208308304 & Malka Hanimov 209202803<br>
-						The jQuery plug-ins we use: validate.<br>
+						The jQuery plug-ins we use: validate.<br><br>
 						Difficulties:<br>
 						1. Making the Database save registered users from the register form.<br>
 						2. Implementing game logic like ghosts chasing after packman and respawn after pacman is eaten.<br>
@@ -158,44 +161,126 @@
 						<label>Number of Ghosts</label>
 				  </div>
 				  <div>
-					<a id="randomButton">
-						<span></span>
-						<span></span>
-						<span></span>
-						<span></span>
-						<label id="randomButtonLbl">Random</label> 
-					</a>
-					<a id="setting_btn_area">
-						<span></span>
-						<span></span>  
-						<span></span>
-						<span></span>
-						<input id="submitSetting" type="submit" value="Play"></input>
-					</a>
-				</div>
+					  <a id="randomButton">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<label id="randomButtonLbl">Random</label> 
+				</a>
+				<a id="setting_btn_area">
+					<span></span>
+					<span></span>  
+					<span></span>
+					<span></span>
+					<input id="submitSetting" type="submit" value="Play"></input>
+				</a>
+				  </div>
 				</form>
 			  </div>
 			</div>
 
-			<div id="gameScreen">
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" />
-				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" />
-				</div>
-				<div id="lives">
-					<label for="lblLives">Lives:</label>
-					<input id="lblLives" type="text" />
-				</div>
-				<div id="game">
-					<canvas id="canvas" height="550" width="550"></canvas>
-				</div>
-				<div id="newGame">
-					<button id="newGameBtn">Name Game</button>
-				</div>
+			<div id="gameScreen" >
+				<table id=gameTable border="1" style="text-align:center;">
+					<tr>
+						<td id=settingLoc  >
+							
+							<table id="settingTable" border="1">
+								<tr>
+								  <th colspan="2">Setting</th>
+								</tr>
+								<tr>
+								  <td><label for="upKeyDisplay">Up:</label></td>
+								  <td><label id= "upKeyDisplay" name="upKeyDisplay"></td>
+								</tr>
+								<tr>
+								  <td><label for="downKeyDisplay">Down:</label></td>
+								  <td><label id= "downKeyDisplay" name="downKeyDisplay"></td>
+								</tr>
+								<tr>
+									<td><label for="leftKeyDisplay">Left:</label></td>
+									<td><label id= "leftKeyDisplay" name="leftKeyDisplay"></td>
+								</tr>
+								<tr>
+									<td><label for="rightKeyDisplay">Right:</label></td>
+									<td><label id= "rightKeyDisplay" name="rightKeyDisplay"></td>
+								</tr>
+								<tr>
+									<td><label for="numOfBallsDisplay">Num of Balls:</label></td>
+									<td><label id= "numOfBallsDisplay" name="numOfBallsDisplay"></td>
+								</tr>
+								<tr>
+									<td><label for="bigBallColorDisplay">Big Ball Color:</label></td>
+									<td><input type="color" id= "bigBallColorDisplay" name="bigBallColorDisplay" disabled></td>
+								</tr>
+								<tr>
+									<td><label for="midBallColorDisplay">Medium Ball Color:</label></td>
+									<td><input type="color" id= "midBallColorDisplay" name="midBallColorDisplay" disabled></td>
+								</tr>
+								<tr>
+									<td><label for="smallBallColorDisplay">Small Ball Color:</label></td>
+									<td><input type="color" id= "smallBallColorDisplay" name="smallBallColorDisplay" disabled></td>
+								</tr>
+								<tr>
+									<td><label for="gameTimeDisplay">Game Time:</label></td>
+									<td><label id= "gameTimeDisplay" name="gameTimeDisplay"></td>
+								</tr>
+								<tr>
+									<td><label for="numOfGhostsDisplay">Num of Ghosts:</label></td>
+									<td><label id= "numOfGhostsDisplay" name="numOfGhostsDisplay"></td>
+								</tr>
+							</table>
+						</td>
+					  <td id=gameLoc >
+						<div id="game">
+							<canvas id="canvas" height="450" width="400"></canvas>
+						</div>
+					  </td>
+					  <td id="gameInfoLoc">
+						  <!--<div id = "gameInfoContent">
+						<div id="score">
+							<label for="lblScore">SCORE:</label>
+							<input id="lblScore" type="text" />
+						</div>
+						<div id="time">
+							<label for="lblTime">TIME:</label>
+							<input id="lblTime" type="text" />
+						</div>
+						<div id="lives">
+							<label for="lblLives">LIVES:</label>
+							<input id="lblLives" type="text" />
+						</div>
+						<div id="newGame">
+							<button id="newGameBtn">Name Game</button>
+						</div>
+						</div>-->
+						<table id="gameInfoTable" border="1">
+							<tr>
+							  <th colspan="3">Properties</th>
+							</tr>
+							<tr id="labels">
+							  <td><label for="lblScore">Score:</label></td>
+							  <td><label for="lblTime">Time:</label></td>
+							  <td><label for="lbLlives">Lives:</label></td>							  
+							</tr>
+							<tr id="values" >
+								<td><input id="lblScore" type="text" size="4"/></td>
+							  <td><input id="lblTime" type="text" size="4"/></td>
+							  <td><input id="lblLives" type="text" size="4"/></td>
+							</tr>
+							<tr>
+								<td><button id="mute_Btn"> Mute </button></td>
+								<td></td>
+								<td><button id="pause_play_Btn"> Pause </button></td>
+							</tr>
+							<tr>
+								<td colspan="3"><button id="newGame"> New Game </button></td>
+							</tr>
+						</table>
+					</td>
+
+					</tr>
+				</table>
 			</div>
 		</div>
 		<footer>

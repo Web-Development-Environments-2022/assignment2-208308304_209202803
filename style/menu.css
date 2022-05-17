@@ -120,6 +120,39 @@ html{
     height: 100px;
 }
 
+.modal {
+    z-index: 999;
+    background-color: #fae97f;
+    margin: auto;
+    top: 15%;
+    padding: 20px;
+    padding-top: 2px;
+    border: 3px solid #111;
+    border-radius: 4px;
+    width: 40%;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Amaranth', sans-serif;
+}
+    
+    .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+    color: #f619ac;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    
+
 footer{
     position: fixed;
     left: 0%;

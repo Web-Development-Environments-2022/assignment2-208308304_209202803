@@ -37,7 +37,7 @@
     padding: 10px 0;
     font-size: 14px;
     color: rgb(0, 0, 0);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid rgb(0, 0, 0);
     outline: none;
@@ -175,7 +175,6 @@
       bottom: 100%;
     }
   }
-  
     
   #register_btn_area {
     position: fixed;
@@ -187,7 +186,7 @@
     #submitRegister{
     background-color: transparent;
     font-size: 18px;
-    color: #ff7df6;
+    color: #ffffff;
     font-family: 'Lobster Two', cursive;
     border-color: transparent;
     
@@ -200,6 +199,31 @@
         border-color: transparent;
         
     }
+  
+    .fa {
+      position: fixed;
+      top: 38%;
+      left:85%;
+      display:inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #000000
+    }
+  
+    .fa-fw {
+      width: 1.28571429em;
+      text-align: center;
+    }
+  
+    .fa-eye:before {
+      content: "\f06e";
+    }
+    .fa-eye-slash:before {
+      content: "\f070";
+    }
 
     #randomButton{
       position: fixed;
@@ -211,7 +235,7 @@
     #setting_btn_area {
       position: fixed;
       left: 200px;
-      bottom: 10px;
+      bottom: 6px;
       text-align: center;
       }
       
@@ -231,3 +255,12 @@
           border-color: transparent;
           
       }
+
+      label.error {
+         height: 12px;
+        color: red;
+        margin-left:90px;
+        padding:1px 5px 0px 5px;
+        font-size: 5px; 
+        }
+

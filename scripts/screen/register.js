@@ -3,14 +3,14 @@ $(document).ready(function(){
     $("#registerMenu").click(showRegisterScreen);
     $("#registerButton").click(showRegisterScreen);
 
-    $(document).on('click', '.toggel-password', function() {
 
-        $(this).toggleClass("fa-eye fa-eye-slash");
-        
+    $(document).on('click', '.toggle-password', function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");   
         var input = $("#passwordRegister");
         input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
     });
 });
+
 
 function showRegisterScreen(){
     $("#welcomeScreen").hide();
