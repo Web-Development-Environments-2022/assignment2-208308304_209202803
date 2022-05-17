@@ -200,3 +200,34 @@
         border-color: transparent;
         
     }
+
+    #randomButton{
+      position: fixed;
+      left: 80px;
+      bottom: 10px;
+      text-align: center;
+    }
+
+    #setting_btn_area {
+      position: fixed;
+      left: 200px;
+      bottom: 10px;
+      text-align: center;
+      }
+      
+      #submitSetting{
+      background-color: transparent;
+      font-size: 18px;
+      color: #ff7df6;
+      font-family: 'Lobster Two', cursive;
+      border-color: transparent;
+      
+      }
+      #submitSetting :hover{
+          background-color: transparent;
+          font-size: 18px;
+          color: #ffffff;
+          font-family: 'Lobster Two', cursive;
+          border-color: transparent;
+          
+      }
