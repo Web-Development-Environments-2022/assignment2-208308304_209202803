@@ -2,7 +2,6 @@ $(document).ready(function(){
     showWelcomeScreen();
     $("#welcomeMenu").click(showWelcomeScreen);
     $("#logoutMenu").click(showWelcomeScreen);
-    $("#pacmanLogo").click(showWelcomeScreen);
 });
 
 

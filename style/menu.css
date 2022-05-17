@@ -1,55 +1,61 @@
 html{
-    background-image: url(../images/background5.jpeg);
+    background-image: url(../images/background3.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
 }
 #pacmanLogo{
-    top: 0;
-    left: 0;
     z-index: 999;
     display: inline;
     position: fixed;
-    height: 150px;
+    height: 200px;
+    position: fixed;
+    left:1%;
+    bottom: -75px;
 }
 
 .menu {
     position: absolute;
+    display: inline;
     top: 5%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
   }
   
   .menu a {
-    color: #f6f4e6;
+    font-family: 'Koulen', cursive;
+    color:  #000000;
     text-decoration: none;
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 500;
     display: inline-block;
-    width: 150px;
+    width: 170px;
     height: 35px;
     padding-top: 10px;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     border-style: double;
-    background-color: #E62D87;
+    border-color:  #e00f8c;
+    background-color: #fbe148;
     margin-left:10px;
     margin-right: 10px;
     text-align: center;
   }
   
   .menu a:hover {
-    color: #fddb3a;
+    color: #e00f8c;
   
   }
   
   .menu .dot {
     width: 6px;
     height: 6px;
-    background: #fddb3a;
+    background: #e00f8c;
     border-radius: 50%;
     opacity: 0;
     -webkit-transform: translateX(85px);
@@ -105,72 +111,12 @@ html{
     opacity: 1;
   }
 
-/*#menu
-{
-    position: absolute;
-    top:10%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-    /*
-    text-transform: uppercase;
-    vertical-align: middle;
-    font-size: 14px;
-    letter-spacing: 2px;
-	width: 100%;
-	height: 50px;		
-}
-
-
-ul {
-    text-align: center;
-    list-style-type: none;
-    margin: 0;
-    padding-left: 100px;
-    overflow: hidden;
-    background-color: #e43aa3;
-}
-
-li {
-    display: inline-block;
-    font-weight:bold;
-    text-align: center;
-}
-
-li a {
-    display: block;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 14px 16px;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    align-self: center;
-    height: 30px;
-}
-
-li a:hover {
-    background-color:  rgb(247, 208, 50);
-    color: rgb(56, 14, 170);
-}
-
-li p {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px; 
-    text-decoration: none;
-}
-
-li p:hover {
-    background-color: #111;
-}*/
-
 
 #logo {
     position: absolute;
-    left: 20px;
-    width: 150px;
-    height:48px;
+    right: 20px;
+    width: 250px;
+    height: 100px;
 }
 
 footer{
