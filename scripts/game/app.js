@@ -147,8 +147,23 @@ function Start() {
 	Draw();
 	pac_interval = setInterval(UpdatePositionPacman, refrashRatePacman);	
 	ghost_interval = setInterval(UpdatePositionGhosts, refrashRateGhosts);
-	//TODO: display settings inside the game?
+	
+	
+	//display settings inside the game:
+	displaySettings()
+}
 
+function displaySettings(){
+	$("#upKeyDisplay").html($("#upKey").val());
+	$("#downKeyDisplay").html($("#downKey").val());
+	$("#leftKeyDisplay").html($("#leftKey").val());
+	$("#rightKeyDisplay").html($("#rightKey").val());
+	$("#numOfBallsDisplay").html(food_remain);
+	$("#bigBallColorDisplay").val(largeFoodColor);
+	$("#midBallColorDisplay").val(mediumFoodColor);
+	$("#smallBallColorDisplay").val(smallFoodColor);
+	$("#gameTimeDisplay").html(end_time);
+	$("#numOfGhostsDisplay").html(numOfGhosts);
 }
 
 function findRandomEmptyCell(board) {
