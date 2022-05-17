@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $("#loginScreen").hide();
-    $("#addScreen").hide();
     $("#loginMenu").click(showLoginScreen);
     $("#loginButton").click(showLoginScreen);
     $("#submitLogin").click(loginSubmit);
@@ -35,7 +34,7 @@ function loginSubmit(){
         showSettingScreen();
         $("#loginMenu").hide();
         $("#logoutMenu").show();
-        $("#addMenu").show();
+        $("#settingMenu").show();
         $("#registerMenu").hide();
    
   

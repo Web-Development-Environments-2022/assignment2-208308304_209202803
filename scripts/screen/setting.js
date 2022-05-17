@@ -2,6 +2,7 @@ var keyCodeDict;
 
 $(document).ready(function(){
     $("#settingScreen").hide();
+    $("#settingMenu").click(showSettingScreen);
 
     $("#randomButton").click(randomSettings); 
 

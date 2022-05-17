@@ -14,11 +14,12 @@
 		<script type="text/javascript" src="./scripts/jQuery/settingsValidation.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style/menu.css" />
 		<link rel="stylesheet" type="text/css" href="./style/welcome.css" />
-		<link rel="stylesheet" type="text/css" href="./style/register.css" />
-		<link rel="stylesheet" type="text/css" href="./style/login.css" />
+		<link rel="stylesheet" type="text/css" href="./style/boxFrom.css" />
 		<title>Ms. Pacman - Nitzan & Malka</title>
 		<link rel="icon" href="./images/pacmanIcon.ico">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Odibee+Sans&family=Righteous&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
@@ -27,7 +28,7 @@
 			<a id="registerMenu">Register</a>
 			<a id="loginMenu">Login</a>
 			<a id="logoutMenu">Logout</a>
-			<a id="addMenu">Add</a>
+			<a id="settingMenu">Setting</a>
 			<a id="aboutMenu">About</a>
 			<div class="dot"></div>
 		</nav>
@@ -40,56 +41,60 @@
 				<button class="button-52" id="loginButton"> Login </button>
 			</div> 
 
-			<div id="registerScreen" class="registerScreen">
-				<h1>Register</h1>
+			<div id="registerScreen" class="boxFrame">
+				<h2>Register</h2>
 				<form id="registerForm" method="post">
-				  <div class="registerFormItem">
-					<label for="userName">Username</label>
+				  <div class="boxItem">
 					<input type="text" name="userName" id="userNameRegister">
+					<label for="userName">Username</label>
 				  </div>
-				  <div class="registerFormItem">
-					<label for="password">Password</label>
+				  <div class="boxItem">
 					<input type="password" name="password" id="passwordRegister">
-					<span toggle="#password-field" class="regEyeloc fa fa-fw fa-eye field_icon toggle-password"></span>
+					<label for="password">Password</label>
+					<span toggle="#password-field" class="regEyeloc fa fa-fw fa-eye field_icon toggle-password"></span>	
 				  </div>
-				  <div class="registerFormItem">
-					<label for="fullName">Full Name</label>
+				  <div class="boxItem">
 					<input type="text" name="fullName">
+					<label for="fullName">Full Name</label>
 				  </div>
-				  <div class="registerFormItem">
-					<label for="email">Email</label>
+				  <div class="boxItem">
 					<input type="email" name="email"> 
+					<label for="email">Email</label>
 				  </div>
-				  <div class="registerFormItem">
-					<label for="dateOfBirth">Date of Birth</label>
+				  <div class="boxItem">
 					<input type="date" name="dateOfBirth">
+					<label for="dateOfBirth">Date of Birth</label>
 				  </div>
-				  <div>
+				  <a id="register_btn_area">
+					<span></span>
+					<span></span>  
+					<span></span>
+					<span></span>
 					<input id="submitRegister" type="submit"  value="Sign In"></input>
-				  </div>
+				</a>
 				</form>
 			</div>
-			
-			<div id="loginScreen" class="loginScreen">
-				<h1>Login</h1>
-				<form id="loginForm">
-				  <div class="loginFormItem">
-					<label>Username</label>
-					<input type="text" name="userName">
-					
-				  </div>
-				  <div class="loginFormItem">
-					<label>Password</label>
-					<input type="password" name="password">
-					
-				  </div>
 
-				  <a href="#">
-					<label id="submitLogin">Login</label>
+			<div id="loginScreen" class="boxFrame">
+				<h2>Login</h2>
+				<form id="loginForm">
+				  <div class="boxItem">
+					<input type="text" name="userName">
+					<label>Username</label>
+				  </div>
+				  <div class="boxItem">
+					<input type="password" name="password">
+					<label>Password</label>
+				  </div>
+				  <a id="submitLogin" href="#">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<label id="submitBtn">Login</label>
 				  </a>
 				</form>
-			</div>
-
+			  </div>
 
 			<dialog id="aboutDialog" class="modal" >
 				<div class="modalHeader">
@@ -108,49 +113,49 @@
 				</div>
 			</dialog>
 
-			<div id="settingScreen">
+			<div id="settingScreen" class="boxFrame">
 				<div class="settingsBox">
-				<h1>Game Settings</h1>
+				<h2>Game Settings</h2>
 				<form id="settingForm" method="post">
-					<div class="settingFormItem">
-						<label>Key Up</label>
+					<div class="boxItem">
 						<input type="button" id= "upKey" name="Up" >
+						<label>Up Key</label>
 					  </div>
-					  <div class="settingFormItem">
-						<label>Key Down</label>
+					  <div class="boxItem">
 						<input type="button" id= "downKey" name="Down" >
+						<label>Down Key</label>
 					  </div>
-					  <div class="settingFormItem">
-						<label>Key Left</label>
+					  <div class="boxItem">
 						<input type="button" id= "leftKey" name="Left" >
+						<label>Left Key</label>
 					  </div>
-					  <div class="settingFormItem">
-						<label>Key Right</label>
+					  <div class="boxItem">
 						<input type="button" id= "rightKey" name="Right" >
+						<label>Right Key</label>
 					  </div>
-					<div class="settingFormItem">
-						<label>Number of balls (between 50 to 90)</label>
+					<div class="boxItem">
 						<input type="number" id="numOfBalls" name="numOfBalls" min="50" max="90" >
+						<label>Number of balls</label>
 					</div>
-					<div class="settingFormItem">
-						<label>Big Ball Color</label>
+					<div class="boxItem">
 						<input type="color" id="bigBallColor" name="bigBallColor" >
+						<label>Big Ball Color</label>
 					</div>
-					<div class="settingFormItem">
-						<label>Medium Ball Color</label>
+					<div class="boxItem">
 						<input type="color" id="mediumBallColor" name="mediumBallColor" >
+						<label>Medium Ball Color</label>
 					</div>
-					<div class="settingFormItem">
-						<label>Small Ball Color</label>
+					<div class="boxItem">
 						<input type="color" id="smallBallColor" name="smallBallColor" >
+						<label>Small Ball Color</label>
 					</div>
-				  <div class="settingFormItem">
-					<label>Time of the game (min 60 sec)</label>
+				  <div class="boxItem">
 					<input type="number" id="gameTime" name="gameTime" min="60" >
+					<label>Time of the game (min 60 sec)</label>
 				  </div>
-				  <div class="settingFormItem">
-						<label>Number of Monsters</label>
+				  <div class="boxItem">
 						<input type="number" id="numOfMonsters" name="numOfMonsters" min="1" max="4" >
+						<label>Number of Monsters</label>
 				  </div>
 				  <div>
 					<label id="randomButton">Random</label> 

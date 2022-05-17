@@ -8,7 +8,7 @@ $(document).ready(function(){
 function showWelcomeScreen(){
     $("#welcomeScreen").show();
     $("#logoutMenu").hide();
-    $("#addMenu").hide();
+    $("#settingMenu").hide();
     $("#loginMenu").show();
     $("#registerMenu").show();
     $("#registerScreen").hide();
