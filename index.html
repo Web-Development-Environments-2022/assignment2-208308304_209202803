@@ -1,21 +1,190 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="./jquery-3.4.1.slim.min.js"></script>
-		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./scripts/jQuery/jquery-3.4.1.slim.min.js"></script>
+		<script type="text/javascript" src="./scripts/database/database.js"></script>
+		<script type="text/javascript" src="./scripts/game/app.js"></script>
+		<script type="text/javascript" src="./scripts/screen/welcome.js"></script>
+		<script type="text/javascript" src="./scripts/screen/register.js"></script>
+		<script type="text/javascript" src="./scripts/screen/login.js"></script>
+		<script type="text/javascript" src="./scripts/screen/about.js"></script>
+		<script type="text/javascript" src="./scripts/screen/setting.js"></script>
+		<script type="text/javascript" src ="./scripts/jQuery/jquery.validate.js"></script>
+		<script type="text/javascript" src="./scripts/jQuery/registerValidation.js"></script>
+		<script type="text/javascript" src="./scripts/jQuery/settingsValidation.js"></script>
+		<link rel="stylesheet" type="text/css" href="./style/menu.css" />
+		<link rel="stylesheet" type="text/css" href="./style/welcome.css" />
+		<link rel="stylesheet" type="text/css" href="./style/register.css" />
+		<link rel="stylesheet" type="text/css" href="./style/login.css" />
+		<title>Ms. Pacman - Nitzan & Malka</title>
+		<link rel="icon" href="./images/pacmanIcon.ico">
 	</head>
 
 	<body>
-		<div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
+		<!--<img src="images/logoGif.gif" id="pacmanLogo" alt="pacmanLogo">-->
+		<img src="images/spark.webp" id="pacmanLogo" alt="pacmanLogo">
+		<nav class="menu">
+			<a href="#" id="welcomeMenu">Welcome</a>
+			<a id="registerMenu">Register</a>
+			<a id="loginMenu">Login</a>
+			<a id="logoutMenu">Logout</a>
+			<a id="addMenu">Add</a>
+			<a id="aboutMenu">About</a>
+			<div class="dot"></div>
+		</nav>
+
+		<h2 id="userText">Online User: </h2>
+
+		<div id="content">
+			<div id="welcomeScreen">
+				<button id="registerButton"> Register </button>
+				<button id="loginButton"> Login </button>
+			</div> 
+
+			<div id="registerScreen" class="registerScreen">
+				<h1>Register</h1>
+				<form id="registerForm" method="post">
+				  <div class="registerFormItem">
+					<label for="userName">Username</label>
+					<input type="text" name="userName" id="userNameRegister">
+				  </div>
+				  <div class="registerFormItem">
+					<label for="password">Password</label>
+					<input type="password" name="password" id="passwordRegister">
+					<span toggle="#password-field" class="regEyeloc fa fa-fw fa-eye field_icon toggle-password"></span>
+				  </div>
+				  <div class="registerFormItem">
+					<label for="fullName">Full Name</label>
+					<input type="text" name="fullName">
+				  </div>
+				  <div class="registerFormItem">
+					<label for="email">Email</label>
+					<input type="email" name="email"> 
+				  </div>
+				  <div class="registerFormItem">
+					<label for="dateOfBirth">Date of Birth</label>
+					<input type="date" name="dateOfBirth">
+				  </div>
+				  <div>
+					<input id="submitRegister" type="submit"  value="Sign In"></input>
+				  </div>
+				</form>
+			</div>
+			
+			<div id="loginScreen" class="loginScreen">
+				<h1>Login</h1>
+				<form id="loginForm">
+				  <div class="loginFormItem">
+					<label>Username</label>
+					<input type="text" name="userName">
+					
+				  </div>
+				  <div class="loginFormItem">
+					<label>Password</label>
+					<input type="password" name="password">
+					
+				  </div>
+
+				  <a href="#">
+					<label id="submitLogin">Login</label>
+				  </a>
+				</form>
+			</div>
+
+
+			<dialog id="aboutDialog" class="modal" >
+				<div class="modalHeader">
+					<span id="closeAbout" class="close" >&times;</span>
+					<h2>ABOUT</h2>
+				</div>
+				<div class="modalBody">
+					<p>Nitzan Hen 208308304 & Malka Hanimov 209202803<br>
+						The jQuery plug-ins we use: validate.<br>
+						Difficulties:<br>
+						1. Making the Database save registered users from the register form.<br>
+						2. Implementing game logic like ghosts chasing after packman and respawn after pacman is eaten.<br>
+					</p>
+				</div>
+
+				</div>
+			</dialog>
+
+			<div id="settingScreen">
+				<div class="settingsBox">
+				<h1>Game Settings</h1>
+				<form id="settingForm" method="post">
+					<div class="settingFormItem">
+						<label>Key Up</label>
+						<input type="button" id= "upKey" name="Up" >
+					  </div>
+					  <div class="settingFormItem">
+						<label>Key Down</label>
+						<input type="button" id= "downKey" name="Down" >
+					  </div>
+					  <div class="settingFormItem">
+						<label>Key Left</label>
+						<input type="button" id= "leftKey" name="Left" >
+					  </div>
+					  <div class="settingFormItem">
+						<label>Key Right</label>
+						<input type="button" id= "rightKey" name="Right" >
+					  </div>
+					<div class="settingFormItem">
+						<label>Number of balls (between 50 to 90)</label>
+						<input type="number" id="numOfBalls" name="numOfBalls" min="50" max="90" >
+					</div>
+					<div class="settingFormItem">
+						<label>Big Ball Color</label>
+						<input type="color" id="bigBallColor" name="bigBallColor" >
+					</div>
+					<div class="settingFormItem">
+						<label>Medium Ball Color</label>
+						<input type="color" id="mediumBallColor" name="mediumBallColor" >
+					</div>
+					<div class="settingFormItem">
+						<label>Small Ball Color</label>
+						<input type="color" id="smallBallColor" name="smallBallColor" >
+					</div>
+				  <div class="settingFormItem">
+					<label>Time of the game (min 60 sec)</label>
+					<input type="number" id="gameTime" name="gameTime" min="60" >
+				  </div>
+				  <div class="settingFormItem">
+						<label>Number of Monsters</label>
+						<input type="number" id="numOfMonsters" name="numOfMonsters" min="1" max="4" >
+				  </div>
+				  <div>
+					<label id="randomButton">Random</label> 
+					<input id="submitSetting" type="submit" value="Play"></input>
+				  </div>
+				</form>
+			  </div>
+			</div>
+
+			<div id="gameScreen">
+				<div id="score">
+					<label for="lblScore">SCORE:</label>
+					<input id="lblScore" type="text" />
+				</div>
+				<div id="time">
+					<label for="lblTime">TIME:</label>
+					<input id="lblTime" type="text" />
+				</div>
+				<div id="lives">
+					<label for="lblLives">Lives:</label>
+					<input id="lblLives" type="text" />
+				</div>
+				<div id="game">
+					<canvas id="canvas" height="550" width="550"></canvas>
+				</div>
+				<div id="newGame">
+					<button id="newGameBtn">Name Game</button>
+				</div>
+			</div>
 		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
+		<footer>
+			<span class="contact">Nitzan Hen & Malka Hanimov</span><br>
+			<span class="contact">nitzanhe@post.bgu.ac.il   malkahan@post.bgu.ac.il</span>
+		</footer>
 	</body>
 </html>
