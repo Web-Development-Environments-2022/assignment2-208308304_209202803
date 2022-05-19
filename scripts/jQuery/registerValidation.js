@@ -21,6 +21,7 @@ $().ready(function() {
             },
             dateOfBirth: {
                 required: true,
+                checkDOB: true
             },
         },
         messages: {
@@ -69,3 +70,13 @@ $.validator.addMethod("alphaNumeric",function(value) {
 $.validator.addMethod("lettersOnly", function(value, element) {
     return this.optional(element) || /^[a-z ]+$/i.test(value);
 }, "Must contain only letters");
+
+$.validator.addMethod("checkDOB", function (value, element) {
+    var  minDate = Date.parse("01/01/1920");  
+     var today=new Date();
+     var DOB = Date.parse(value);  
+     if((DOB <= today && DOB >= minDate)) {  
+         return true;  
+     }  
+     return false;  
+ }, "Invalid date of birth");
