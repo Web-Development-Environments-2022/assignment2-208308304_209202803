@@ -1,3 +1,12 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7803710&assignment_repo_type=AssignmentRepo)
-# Assignment2
- 
+nitzan hen, id= 208308304<br>
+malka hanimov, id=209202803<br>
+https://web-development-environments-2022.github.io/assignment2-208308304_209202803/<br>
+
+our pacman game has the following added functionalities:<br>
+- pacman can eat an heart and receive extra life.<br>
+- pacman can eat a snail and receive 5 seconds where the ghosts will be in slow motion.<br>
+- pacman can eat a clock and receive extra 10 seconds to play.<br>
+- pacman can eat a strawberry and receive 50 score, the strawberry is moving so you better catch it! :)<br>
+
+enjoy!
+
