@@ -1,5 +1,5 @@
-nitzan hen, id= 208308304<br>
-malka hanimov, id=209202803<br>
+Nitzan Hen, id= 208308304<br>
+Malka Hanimov, id=209202803<br>
 https://web-development-environments-2022.github.io/assignment2-208308304_209202803/<br>
 
 our pacman game has the following added functionalities:<br>
