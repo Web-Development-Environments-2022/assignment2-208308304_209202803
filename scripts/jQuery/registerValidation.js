@@ -1,6 +1,6 @@
-
 $().ready(function() {
     $("#registerForm").validate({
+        errorClass: "error fail-alert",
         rules: {
             userName: {
                 required: true,
@@ -42,7 +42,6 @@ $().ready(function() {
             }
         },
         errorPlacement: function(label, element) {
-            label.addClass('errorMessage');
             label.insertAfter(element);
           },
           wrapper: 'span',
@@ -70,6 +69,3 @@ $.validator.addMethod("alphaNumeric",function(value) {
 $.validator.addMethod("lettersOnly", function(value, element) {
     return this.optional(element) || /^[a-z ]+$/i.test(value);
 }, "Must contain only letters");
-
-
-

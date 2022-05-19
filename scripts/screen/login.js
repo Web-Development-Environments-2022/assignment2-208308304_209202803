@@ -5,8 +5,6 @@ $(document).ready(function(){
     $("#submitLogin").click(loginSubmit);
 });
 
-
-
 function showLoginScreen(){
     $("#welcomeScreen").hide();
     $("#registerScreen").hide();
@@ -14,13 +12,13 @@ function showLoginScreen(){
     $("#loginForm")[0].reset();
     $("#loginScreen").show();
     $("#userText").hide();
+    $("#gameOverDialog").hide();
 }
 
 function showUsername(){
     $("#userText").show();
     $("#userText").text("Online User: " + loggedInUser);
 }
-
 
 function loginSubmit(){
     var $inputs = $('#loginForm :input');
@@ -36,16 +34,9 @@ function loginSubmit(){
         $("#logoutMenu").show();
         $("#settingMenu").show();
         $("#registerMenu").hide();
-   
-  
-        
     }
     else {
         alert("The username or password is incorrect");
         showLoginScreen();
     }
 }
-
-
-
-

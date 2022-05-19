@@ -18,26 +18,22 @@
 		<link rel="stylesheet" type="text/css" href="./style/game.css" />
 		<title>Ms. Pacman - Nitzan & Malka</title>
 		<link rel="icon" href="./images/pacmanIcon.ico">
-		<title>Ms. Pacman - Nitzan & Malka</title>
-		<link rel="icon" href="./images/pacmanIcon.ico">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Odibee+Sans&family=Righteous&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
 		<nav class="menu">
 			<a href="#" id="welcomeMenu">Welcome</a>
-			<a id="registerMenu">Register</a>
-			<a id="loginMenu">Login</a>
-			<a id="logoutMenu">Logout</a>
-			<a id="settingMenu">Setting</a>
-			<a id="aboutMenu">About</a>
+			<a href="#" id="registerMenu">Register</a>
+			<a href="#" id="loginMenu">Login</a>
+			<a href="#" id="logoutMenu">Logout</a>
+			<a href="#" id="settingMenu">Setting</a>
+			<a href="#" id="aboutMenu">About</a>
 			<div class="dot"></div>
 		</nav>
-
-		<h2 id="userText">Online User: </h2>
-
 		<div id="content">
 			<div id="welcomeScreen">
 				<button class="button-52" id="registerButton"> Register </button>
@@ -109,10 +105,9 @@
 						The jQuery plug-ins we use: validate.<br><br>
 						Difficulties:<br>
 						1. Making the Database save registered users from the register form.<br>
-						2. Implementing game logic like ghosts chasing after packman and respawn after pacman is eaten.<br>
+						2. Implementing game logic like ghosts chasing after pacman and respawn after pacman is eaten.<br>
 					</p>
 				</div>
-
 				</div>
 			</dialog>
 
@@ -121,45 +116,61 @@
 				<h2>Game Settings</h2>
 				<form id="settingForm" method="post">
 					<div class="boxItem">
-						<input type="button" id= "upKey" name="Up" >
-						<label>Up Key</label>
-					  </div>
-					  <div class="boxItem">
-						<input type="button" id= "downKey" name="Down" >
-						<label>Down Key</label>
-					  </div>
-					  <div class="boxItem">
-						<input type="button" id= "leftKey" name="Left" >
-						<label>Left Key</label>
-					  </div>
-					  <div class="boxItem">
-						<input type="button" id= "rightKey" name="Right" >
-						<label>Right Key</label>
-					  </div>
-					<div class="boxItem">
-						<input type="number" id="numOfBalls" name="numOfBalls" min="50" max="90" >
-						<label>Number of balls</label>
+						<table width="100%">
+							<tr >
+								<td width =50%><label>Up Key</label></td>
+								<td width =50%><input type="button" id= "upKey" name="Up" ></td>
+							</tr>
+							<tr>
+								<td><label>Down Key</label></td>
+								<td><input type="button" id= "downKey" name="Down" ></td>
+							</tr>
+							<tr>
+								<td><label>Left Key</label></td>
+								<td><input type="button" id= "leftKey" name="Left" ></td>
+							</tr>
+							<tr>
+								<td><label>Right Key</label></td>
+								<td><input type="button" id= "rightKey" name="Right" ></td>
+							</tr>
+						</table>
 					</div>
 					<div class="boxItem">
-						<input type="color" id="bigBallColor" name="bigBallColor" >
-						<label>Big Ball Color</label>
+						<table width =100% style="text-align: center;">
+							<tr>
+								<td></td>
+								<td  id="colorslbl">Ball Colors:</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td width=33% class="colorLabel">Big</td>
+								<td width=33% class="colorLabel">Medium</td>
+								<td width=33% class="colorLabel">Small</td>
+							</tr>
+							<tr>
+								<td><input type="color" id="bigBallColor" name="bigBallColor" ></td>
+								<td><input type="color" id="mediumBallColor" name="mediumBallColor" ></td>
+								<td><input type="color" id="smallBallColor" name="smallBallColor" ></td>
+							</tr>
+						</table>
 					</div>
 					<div class="boxItem">
-						<input type="color" id="mediumBallColor" name="mediumBallColor" >
-						<label>Medium Ball Color</label>
+						<table width = 100%>
+							<tr>
+								<td width =60%><label>Number of balls</label></td>
+								<td><input type="number" id="numOfBalls" name="numOfBalls" min="50" max="90" ></td>
+							</tr>
+							<tr>
+								<td><label>Time of the game</label></td>
+								<td><input type="number" id="gameTime" name="gameTime" min="60" ></td>
+							</tr>
+							<tr>
+								<td><label>Number of Ghosts</label></td>
+								<td><input type="number" id="numOfMonsters" name="numOfMonsters" min="1" max="4" ></td>
+							</tr>
+						</table>
 					</div>
-					<div class="boxItem">
-						<input type="color" id="smallBallColor" name="smallBallColor" >
-						<label>Small Ball Color</label>
-					</div>
-				  <div class="boxItem">
-					<input type="number" id="gameTime" name="gameTime" min="60" >
-					<label>Time of the game</label>
-				  </div>
-				  <div class="boxItem">
-						<input type="number" id="numOfMonsters" name="numOfMonsters" min="1" max="4" >
-						<label>Number of Ghosts</label>
-				  </div>
+					<br>
 				  <div>
 					  <a id="randomButton">
 					<span></span>
@@ -179,114 +190,103 @@
 				</form>
 			  </div>
 			</div>
+			<dialog id="gameOverDialog" class="modal" >
+				<div class="modalHeader">
+					<h2>GAME OVER</h2>
+				</div>
+					<div class="modalBody">
+						<span id=endGameText></span><br><br><br>
+						<button id="endToSettings"><b>Settings </b></button>
+						<button id="endToNewGame"><b>New game </b></button>
+					</div>
+				</div>
+			</dialog>
 
 			<div id="gameScreen" >
-				<table id=gameTable border="1" style="text-align:center;">
+				<table id=gameTable style="text-align:center;">
 					<tr>
 						<td id=settingLoc  >
 							
-							<table id="settingTable" border="1">
+							<table id="settingTable">
 								<tr>
-								  <th colspan="2">Setting</th>
+								  <th colspan="3">Setting</th>
 								</tr>
 								<tr>
-								  <td><label for="upKeyDisplay">Up:</label></td>
-								  <td><label id= "upKeyDisplay" name="upKeyDisplay"></td>
+								  <td colspan="2"><label for="upKeyDisplay">Up Key:</label></td>
+								  <td colspan="2"><label id= "upKeyDisplay" name="upKeyDisplay"></td>
 								</tr>
 								<tr>
-								  <td><label for="downKeyDisplay">Down:</label></td>
-								  <td><label id= "downKeyDisplay" name="downKeyDisplay"></td>
+								  <td colspan="2"><label for="downKeyDisplay">Down Key:</label></td>
+								  <td colspan="2"><label id= "downKeyDisplay" name="downKeyDisplay"></td>
 								</tr>
 								<tr>
-									<td><label for="leftKeyDisplay">Left:</label></td>
-									<td><label id= "leftKeyDisplay" name="leftKeyDisplay"></td>
+									<td colspan="2"><label for="leftKeyDisplay">Left Key:</label></td>
+									<td colspan="2"><label id= "leftKeyDisplay" name="leftKeyDisplay"></td>
 								</tr>
 								<tr>
-									<td><label for="rightKeyDisplay">Right:</label></td>
-									<td><label id= "rightKeyDisplay" name="rightKeyDisplay"></td>
+									<td colspan="2"><label for="rightKeyDisplay">Right Key:</label></td>
+									<td colspan="2"><label id= "rightKeyDisplay" name="rightKeyDisplay"></td>
 								</tr>
 								<tr>
-									<td><label for="numOfBallsDisplay">Num of Balls:</label></td>
-									<td><label id= "numOfBallsDisplay" name="numOfBallsDisplay"></td>
+									<td width=33% colspan="1"><label for="bigBallColorDisplay">Big Ball Color:</label></td>
+									<td width=33% colspan="1"><label for="midBallColorDisplay">Medium Ball Color:</label></td>
+									<td width=33% colspan="1"><label for="smallBallColorDisplay">Small Ball Color:</label></td>
 								</tr>
 								<tr>
-									<td><label for="bigBallColorDisplay">Big Ball Color:</label></td>
-									<td><input type="color" id= "bigBallColorDisplay" name="bigBallColorDisplay" disabled></td>
+									<td width=33% colspan="1"><input type="color" id= "bigBallColorDisplay" name="bigBallColorDisplay" disabled></td>
+									<td width=33% colspan="1"><input type="color" id= "midBallColorDisplay" name="midBallColorDisplay" disabled></td>
+									<td width=33% colspan="1"><input type="color" id= "smallBallColorDisplay" name="smallBallColorDisplay" disabled></td>
 								</tr>
 								<tr>
-									<td><label for="midBallColorDisplay">Medium Ball Color:</label></td>
-									<td><input type="color" id= "midBallColorDisplay" name="midBallColorDisplay" disabled></td>
+									<td colspan="2"><label for="numOfBallsDisplay">Num of Balls:</label></td>
+									<td colspan="2"><label id= "numOfBallsDisplay" name="numOfBallsDisplay"></td>
+								<tr>
+									<td colspan="2"><label for="gameTimeDisplay">Game Time:</label></td>
+									<td colspan="2"><label id= "gameTimeDisplay" name="gameTimeDisplay"></td>
 								</tr>
 								<tr>
-									<td><label for="smallBallColorDisplay">Small Ball Color:</label></td>
-									<td><input type="color" id= "smallBallColorDisplay" name="smallBallColorDisplay" disabled></td>
-								</tr>
-								<tr>
-									<td><label for="gameTimeDisplay">Game Time:</label></td>
-									<td><label id= "gameTimeDisplay" name="gameTimeDisplay"></td>
-								</tr>
-								<tr>
-									<td><label for="numOfGhostsDisplay">Num of Ghosts:</label></td>
-									<td><label id= "numOfGhostsDisplay" name="numOfGhostsDisplay"></td>
+									<td colspan="2"><label for="numOfGhostsDisplay">Num of Ghosts:</label></td>
+									<td colspan="2"><label id= "numOfGhostsDisplay" name="numOfGhostsDisplay"></td>
 								</tr>
 							</table>
 						</td>
 					  <td id=gameLoc >
 						<div id="game">
-							<canvas id="canvas" height="450" width="400"></canvas>
+							<table id="gameInfoTable">
+								<tr>
+								  <td><label for="lblScore">Score:</label></td>
+								  <td><input id="lblScore" type="text" size="4"/></td>
+								  <td><label for="lblTime">Time:</label></td>
+								  <td><input id="lblTime" type="text" size="4"/></td>
+								  <td><label for="lbLlives">Lives:</label></td>
+								  <td><input id="lblLives" type="text" size="4"/></td>	
+								</tr>
+								<tr><td colspan="6"><canvas id="canvas" height="450" width="405"></canvas></td></tr>
+							</table>
 						</div>
 					  </td>
 					  <td id="gameInfoLoc">
-						  <!--<div id = "gameInfoContent">
-						<div id="score">
-							<label for="lblScore">SCORE:</label>
-							<input id="lblScore" type="text" />
-						</div>
-						<div id="time">
-							<label for="lblTime">TIME:</label>
-							<input id="lblTime" type="text" />
-						</div>
-						<div id="lives">
-							<label for="lblLives">LIVES:</label>
-							<input id="lblLives" type="text" />
-						</div>
-						<div id="newGame">
-							<button id="newGameBtn">Name Game</button>
-						</div>
-						</div>-->
-						<table id="gameInfoTable" border="1">
+						<table id="game_Btns_table">
 							<tr>
-							  <th colspan="3">Properties</th>
-							</tr>
-							<tr id="labels">
-							  <td><label for="lblScore">Score:</label></td>
-							  <td><label for="lblTime">Time:</label></td>
-							  <td><label for="lbLlives">Lives:</label></td>							  
-							</tr>
-							<tr id="values" >
-								<td><input id="lblScore" type="text" size="4"/></td>
-							  <td><input id="lblTime" type="text" size="4"/></td>
-							  <td><input id="lblLives" type="text" size="4"/></td>
+								<td><button id="newGameBtn" class="button-52"> New Game </button></td>
 							</tr>
 							<tr>
-								<td><button id="mute_Btn"> Mute </button></td>
-								<td></td>
-								<td><button id="pause_play_Btn"> Pause </button></td>
+								<td><button id="pause_play_Btn" class="button-52"> Pause </button></td>
 							</tr>
 							<tr>
-								<td colspan="3"><button id="newGame"> New Game </button></td>
+								<td><button id="mute_Btn" class="button-52"> Mute </button></td>
 							</tr>
 						</table>
-					</td>
-
+					  </td>
 					</tr>
 				</table>
 			</div>
 		</div>
+		<div id="userText">Online User: </div>
 		<footer>
-			<img src="images/logoGif.gif" id="pacmanLogo" alt="pacmanLogo">
-			<span class="contact">Nitzan Hen & Malka Hanimov</span><br>
-			<span class="contact">nitzanhe@post.bgu.ac.il   malkahan@post.bgu.ac.il</span>
+			<img src="images/logoGif.gif" id="pacmanGif" alt="pacmanGif">
+			<!-- <span class="contact"> & </span> -->
+			<span class="contact">Nitzan Hen - nitzanhe@post.bgu.ac.il &emsp; &emsp;  & &emsp; &emsp; Malka Hanimov - malkahan@post.bgu.ac.il</span>
 		</footer>
 	</body>
 </html>

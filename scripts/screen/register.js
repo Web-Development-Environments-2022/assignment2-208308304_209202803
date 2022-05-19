@@ -19,6 +19,7 @@ function showRegisterScreen(){
     $("#registerForm")[0].reset();
     $("#registerScreen").show();
     $("#userText").hide();
+    $("#gameOverDialog").hide();
 }
 
 function registerSubmit(){

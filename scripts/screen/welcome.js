@@ -4,7 +4,6 @@ $(document).ready(function(){
     $("#logoutMenu").click(showWelcomeScreen);
 });
 
-
 function showWelcomeScreen(){
     $("#welcomeScreen").show();
     $("#logoutMenu").hide();
@@ -16,10 +15,8 @@ function showWelcomeScreen(){
     $("#settingScreen").hide();
     $("#gameScreen").hide();
     $("#userText").hide();
-    //onlineUser = null;
-    //$("#onlineUserText").text("Online User: ");
-    //if(pause_game == false){
-    //    pauseGame();
-    //}
-   }
-
+    $("#gameOverDialog").hide();
+    if(pause_game == false){
+        pauseGame();
+     }
+}

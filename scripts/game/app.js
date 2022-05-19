@@ -11,15 +11,17 @@ var pacDir;
 var pacEyeX;
 var pacEyeY;
 var score;
-var pac_color;//TODO DELETE if delete green
+var pac_color;
 var start_time;
+var slow_motion;
 var time_elapsed;
+var game_time;
 var end_time;
 var pac_interval;	
 var ghost_interval;	
 var refrashRateGhosts = 300;	
 var refrashRatePacman = 120;
-
+var first_slow;
 var food_remain;
 var smallFoodColor;
 var mediumFoodColor;
@@ -27,14 +29,24 @@ var largeFoodColor;
 var numOfGhosts;
 var lives;
 var ghosts_curr_loc ={0:[1,1],1:[boardColLength-2,boardRowLength-2],2:[1, boardRowLength-2],  3:[boardColLength-2, 1]};
-var ghost_starter_loc =  {0:[1,1], 1:[boardColLength-2,boardRowLength-2], 2:[1, boardRowLength-2],  3:[boardColLength-2, 1]};//TODO change const 
+var ghost_starter_loc =  {0:[1,1], 1:[boardColLength-2,boardRowLength-2], 2:[1, boardRowLength-2],  3:[boardColLength-2, 1]}; 
 var moving_score_loc = [13,15];
 var moving_score_eaten = false;
+var suspension_time;
+var num_of_balls;
+var pause_game = false;
+var mute = false;
+var audio = new Audio("./music/pacmanTheme.mp3")
+audio.volume = 0.2;
+var hurtAudio = new Audio("./music/pacmanHurt.mp3")
+hurtAudio.volume = 0.2;
 var canvas_background_color = "black";	
 var clock_img = new Image();	
 clock_img.src = "./images/clock.png";	
 var heart_img = new Image();	
 heart_img.src = "./images/heart.png";	
+var snail_img = new Image();	
+snail_img.src = "./images/snail.png";	
 var moving_score_img = new Image();	
 moving_score_img.src = "./images/strawberry.png";	
 var ghosts_imges = [new Image(),new Image(),new Image(),new Image()];	
@@ -43,26 +55,24 @@ for (var i = 0; i < 4; i++){
 	ghosts_imges[i].src = ghosts_srcs[i];	
 }
 
-
 $(document).ready(function() {
 	context = canvas.getContext("2d");
 	scale = (canvas.height/(boardRowLength));
 	$("#newGameBtn").click(Start);
-	// $("#endNewGame").click(showGameScreen);
-	// $("#endToSettings").click(showSettingScreen);
-	// $("#pause_play_Btn").click(pauseGame);
-	// $("#mute_Btn").click(muteAudio);
-	//Start();//TODO: DELETE
+	$("#endToNewGame").click(Start);
+	$("#endToSettings").click(showSettingScreen);
+	$("#pause_play_Btn").click(pauseGame);
+	$("#mute_Btn").click(muteAudio);
 });
 
-//setSettings(38,40,37,39,60,"#1ACFCE", "#F1C216", "#46D852",60,4)//TODO DELETE
 function setSettings(up, down, left, right,numOfBalls, smallBallColor, mediumBallColor, largeBallColor, gameTime, numOfMonsters){
 	upKey = up;
 	downKey = down;
 	leftKey = left;
 	rightKey = right;
+	num_of_balls = numOfBalls;
 	food_remain = numOfBalls;
-	end_time = gameTime;
+	game_time = gameTime;
 	smallFoodColor = smallBallColor;
 	mediumFoodColor = mediumBallColor;
 	largeFoodColor = largeBallColor;
@@ -75,23 +85,39 @@ function showGameScreen(){
 	$("#registerScreen").hide();
     $("#loginScreen").hide();
 	$("#settingScreen").hide();
+	$("#gameOverDialog").hide();
+	audio.load();
+	mute = false;
 	Start();
 }
 
 function Start() {
+	$("#gameOverDialog").hide();
 	board = getBoard();
 	score = 0;
 	lives=5;
+	food_remain = num_of_balls;
+	end_time = game_time;
 	pac_color = "yellow";
 	pacDir = 0;
 	pacEyeX = scale/12;
 	pacEyeY = -3*scale/12;
 	start_time = new Date();
+	refrashRateGhosts = 300;
 	window.clearInterval(pac_interval);
 	window.clearInterval(ghost_interval);
-	//creating movingScore
 	moving_score_loc = [13,15];
 	moving_score_eaten = false;
+	first_slow = true;
+	if(mute){
+		$("#mute_Btn").html("Unmute");
+	}
+	else{
+		$("#mute_Btn").html("Mute");
+		audio.play();
+	}
+	$("#pause_play_Btn").html("Pause");
+	pause_game = false;
 
 	respawnPlayers();
 
@@ -102,6 +128,10 @@ function Start() {
 	//creating heart
 	var emptyCell = findRandomEmptyCell(board);
 	board[emptyCell[0]][emptyCell[1]] = 7;
+
+	//creating snail
+	var emptyCell = findRandomEmptyCell(board);
+	board[emptyCell[0]][emptyCell[1]] = 9;
 
 	//creating food
 	let small_food_num = parseInt((food_remain*60)/100);
@@ -247,6 +277,9 @@ function Draw() {
 				context.drawImage(heart_img, i*scale, j*scale,scale, scale);
 
 			}
+			else if (board[i][j] == 9) {//draw snail
+				context.drawImage(snail_img, i*scale, j*scale,scale, scale);
+			}
 			if (isMovingScore(i,j) && !moving_score_eaten) {//draw moving score 
 				context.drawImage(moving_score_img, i*scale, j*scale,scale, scale);
 			} 
@@ -254,7 +287,6 @@ function Draw() {
 			if (ghost_id!=-1 &&board[i][j] != 4) {//draw ghost	
 				context.drawImage(ghosts_imges[ghost_id], i*scale, j*scale,scale, scale);
 			}
-
 		}
 	}
 }
@@ -268,8 +300,16 @@ function movePacman(new_i,new_j, newPacDir, Xscale, Yscale){
 }
 
 function UpdatePositionPacman() {//update pos is called by a time interval so it can be used to update the position for everybody
-	//TODO? pause
 	//update pacman position
+	if (pause_game == true)
+		return;
+	if (first_slow && (new Date()) - slow_motion >= 5000 ){
+		first_slow = false
+		clearInterval(ghost_interval);
+		refrashRateGhosts = 300;
+		ghost_interval = setInterval(UpdatePositionGhosts, refrashRateGhosts);
+	}
+
 	board[pacman.i][pacman.j] = 0;
 	var x = GetKeyPressed();
 	if (x == 1) {//up
@@ -321,22 +361,28 @@ function UpdatePositionPacman() {//update pos is called by a time interval so it
 		else if (board[pacman.i][pacman.j] == 7) {//if pacman reached heart
 			lives++;
 		}
+		else if (board[pacman.i][pacman.j] == 9) {//if pacman reached snail
+			slow_motion = new Date();
+			clearInterval(ghost_interval);
+			refrashRateGhosts = 600;
+			ghost_interval = setInterval(UpdatePositionGhosts, refrashRateGhosts);
+		}
 		if (isMovingScore(pacman.i,pacman.j)&&!moving_score_eaten) {//if pacman reached movingScore
 			moving_score_eaten=true;
 			score+=50;
 		}	
 		board[pacman.i][pacman.j] = 2;
-
 	}
 	else {//if pacman reached ghost
 		score-=10;
 		lives--;
 		lblLives.value=lives;
-		//TODO eaten music
+		if(!mute)
+			hurtAudio.play();
 		if(lives==0){
 			window.clearInterval(pac_interval);	
 			window.clearInterval(ghost_interval);
-			//TODO gameOver();
+			gameOver();
 		}
 		else{
 		respawnPlayers();
@@ -345,22 +391,19 @@ function UpdatePositionPacman() {//update pos is called by a time interval so it
 	
 	var currentTime = new Date();
 	time_elapsed = parseInt(end_time- (currentTime - start_time) / 1000)+1;
-	// if (score >= 20 && time_elapsed <= 10) {
-	// 	pac_color = "green";
-	// }
 	Draw();
 	
-	if (food_remain== 0) {//TODO win
+	if (food_remain== 0) {
 
 		window.clearInterval(pac_interval);	
 		window.clearInterval(ghost_interval);
-		//window.alert("Game completed");
+		gameOver();
 	} 	
-	else if (time_elapsed <= 0) {//TODO win
+	else if (time_elapsed <= 0) {
 		lblTime.value = 0;
 		window.clearInterval(pac_interval);	
 		window.clearInterval(ghost_interval);
-		//window.alert("Game over");
+		gameOver();
 	} 
 }
 
@@ -381,6 +424,23 @@ function respawnPlayers(){
 	board[emptyCell[0]][emptyCell[1]] = 2;
 	pacman.i = emptyCell[0];
 	pacman.j = emptyCell[1];
+}
+
+function gameOver(){
+		lblTime.value =0 ;
+		audio.pause();
+		$("#gameOverDialog").show();
+		$("#endheaderText").html("Game Over!");
+
+		if (lblLives.value <= 0){
+			$("#endGameText").html("Loser!");
+		}
+		else if (lblScore.value < 100){
+			$("#endGameText").html("You are better than " + lblScore.value + " points!");
+		}
+		else{
+			$("#endGameText").html("Winner!!!");
+		}
 }
 
 function getBoard(){
@@ -536,3 +596,36 @@ function randomMove(i,j){
 	return [new_i,new_j]
 }
 
+function muteAudio(){
+	if(mute == false){
+		mute = true;
+		audio.pause();
+		$("#mute_Btn").html("Unmute");
+	}
+	else{
+		mute = false;
+		audio.play();
+		$("#mute_Btn").html("Mute");
+	}
+}
+
+function pauseGame(){
+	if(!pause_game){
+		pause_game = true;
+		audio.pause();
+		suspension_time = new Date();
+		$("#pause_play_Btn").html("Play");
+		clearInterval(pac_interval);
+		clearInterval(ghost_interval);
+	}
+	else{
+		pause_game = false;
+		if(!mute){
+			audio.play();
+		}
+		end_time = parseInt(end_time) +(new Date()-suspension_time)/1000;
+		$("#pause_play_Btn").html("Pause");
+		pac_interval = setInterval(UpdatePositionPacman, refrashRatePacman);
+		ghost_interval = setInterval(UpdatePositionGhosts, refrashRateGhosts);
+	}
+}

@@ -1,18 +1,13 @@
-
 #gameTable{
     width: 100%;
+    margin-top: 45px;
 
 
 }
  #gameTable tr td{
     margin-left: 15%; 
     position: relative;
-    /* justify-content: center;
-	align-items:center;
-    text-align: center; */
 } 
-
-
 
 #settingLoc{
     width : 30%;
@@ -22,21 +17,43 @@
 #settingTable{
     align-self: center;
     margin-left: 20%; 
+    margin-top: 20%;
 }
 
 #game{
+    width : 100%;
+    margin-left: 5%;
+    margin-top: 3%;
+    align-items: center;
     align-self: center;
-    margin-left: 5%; 
+}
+
+#gameInfoTable{
+    margin-left: 9%;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    border-style: solid;
+    border-color: black;
+    background-color: black;
+}
+#gameInfoTable label{
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+#gameInfoTable input{
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+    font-size: 11px;
+    background-color: black;
 }
 
 #canvas{
     border-style: solid;
     border-color: black;
-}
-
-#gameInfoTable{
-    margin-left: 20%;
-    margin-top: -75%; 
 }
 
 #gameLoc{
@@ -45,4 +62,87 @@
 
 #gameInfoLoc{
     width : 30%;
+}
+
+#gameScreen #settingTable{
+    align-self: center;
+    margin-left: 20%; 
+    margin-top: 20%;
+    left: 35%;
+    top: 45%;
+    position: absolute;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(255, 213, 244, 0.7);
+    border-radius: 2px;
+    font-family: 'Amaranth', sans-serif;
+}
+
+#gameScreen #settingTable th {
+    background-color: rgba(186, 186, 186, 0.7);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 5px 5px;
+}
+
+#gameScreen #settingTable tr {
+    background-color: rgba(255, 255, 255, 0.8s);
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.2);
+}
+
+#gameScreen #settingTable td{
+    padding: 5px 5px;
+      color: #575757;
+      padding-right: 10px;
+      content: attr(data-label);
+      text-align: center;
+      font-size: 14px;
+}
+
+#game_Btns_table{
+    margin-top: -30%;
+}
+#newGameBtn, #pause_play_Btn, #mute_Btn{
+    text-transform: uppercase;
+    margin-left: 60%;
+    padding: 0px 0px 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width :150px;
+    height:50px;
+}
+
+#endToNewGame, #endToSettings{
+    font-family: 'Righteous', cursive;
+    letter-spacing: 1px;
+    color:  #000000;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+    width: 120px;
+    height: 25px;
+    padding-top: 3px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-style: double;
+    border-color:  #DA216F;;
+    background-color: #fbe148;
+    margin-left:10px;
+    margin-right: 10px;
+    text-align: center;
+}
+  
+#endToNewGame:hover{
+    color: #DA216F;;
+  
+}
+
+#endToSettings:hover{
+    color: #DA216F;;
+  
 }

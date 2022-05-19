@@ -33,7 +33,12 @@ function showSettingScreen(){
     $("#registerScreen").hide();
     $("#loginScreen").hide();
     $("#gameScreen").hide();
+    $("#gameOverDialog").hide();
+    if(pause_game == false){
+        pauseGame();
+    }
     setDefaultSettings();
+    validateKeys();
 
 }
 
@@ -95,8 +100,10 @@ function generateRandomInt(min , max ) {
 }
 
 function generateRandomColor(){
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
-    return "#"+randomColor
+    let color = "#";
+    for (let i = 0; i < 3; i++)
+        color += ("0" + Math.floor(((1 + Math.random()) * Math.pow(16, 2)) / 2).toString(16)).slice(-2);
+    return color;
 }
 
 function validateKeys(){

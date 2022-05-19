@@ -2,14 +2,13 @@ $(document).ready(function(){
     $("#aboutDialog").hide();
     $("#aboutMenu").click(function(){
         $("#aboutDialog").show();
+        $("#gameOverDialog").hide();
     });
     $("#closeAbout").click(function(){
         $("#aboutDialog").hide();
     })
 });
 
-
-// close the about dialog by click on esc
 document.addEventListener('keyup', function (event) {
     if ( event.keyCode == 27 )   {
         $("#aboutDialog").hide();  

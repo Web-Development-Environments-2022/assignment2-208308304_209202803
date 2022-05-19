@@ -1,5 +1,6 @@
 $().ready(function() {
     $("#settingForm").validate({
+        errorClass: "error fail-alert",
         rules: {
             upKey: {
                 required: true
@@ -63,11 +64,9 @@ $().ready(function() {
             },
             numOfMonsters: { 
                 required: "required"
-
             },  
         },
         errorPlacement: function(label, element) {
-            label.addClass('errorMessage');
             label.insertAfter(element);
           },
           wrapper: 'span',
@@ -75,7 +74,5 @@ $().ready(function() {
         submitHandler: function(event){
             settingSubmit();
         }
-        
-
     });
 });
