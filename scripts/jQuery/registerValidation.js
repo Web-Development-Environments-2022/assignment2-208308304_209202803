@@ -64,7 +64,7 @@ $.validator.addMethod("customEmail", function(value, element) {
 
 $.validator.addMethod("alphaNumeric",function(value) {
     return /^[A-z0-9\d=!\-@._*]*$/.test(value) && /[A-z]/.test(value) && /\d/.test(value);
-}, "Must contain letters and numbers");
+}, "Must contain only letters and numbers");
 
 $.validator.addMethod("lettersOnly", function(value, element) {
     return this.optional(element) || /^[a-z ]+$/i.test(value);
